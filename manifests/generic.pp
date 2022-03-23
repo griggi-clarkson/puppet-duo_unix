@@ -24,10 +24,11 @@ class duo_unix::generic {
   }
 
   if $duo_unix::manage_ssh {
-    service { $duo_unix::ssh_service:
-      ensure => running,
-      enable => true;
+    if !$duo_unix::ssh_managed_already {
+      service { $duo_unix::ssh_service:
+        ensure => running,
+        enable => true;
+      }
     }
   }
-
 }
