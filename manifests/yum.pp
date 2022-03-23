@@ -39,7 +39,7 @@ class duo_unix::yum {
   }
 
   if $duo_unix::manage_ssh {
-    ensure_packages( 'openssh-server': ensure => 'present' )
+    ensure_packages(['openssh-server'], { ensure => 'present' })
   }
 
   package {  $duo_unix::duo_package:
